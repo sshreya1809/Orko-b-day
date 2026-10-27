@@ -129,12 +129,21 @@ function initEnvelope() {
   const waxSeal = document.getElementById('waxSeal');
   const closeBtn = document.getElementById('closeLetterBtn');
 
-  if (waxSeal && envelope) {
-    waxSeal.addEventListener('click', () => {
+  function openLetter(e) {
+    if (e) e.stopPropagation();
+    if (!envelope.classList.contains('is-open')) {
       envelope.classList.add('is-open');
       playChimeSound();
       triggerConfetti(60);
-    });
+    }
+  }
+
+  if (waxSeal) {
+    waxSeal.addEventListener('click', openLetter);
+  }
+
+  if (envelope) {
+    envelope.addEventListener('click', openLetter);
   }
 
   if (closeBtn && envelope) {
