@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Arka! 🎂💖 | 6 Months of Love</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Floating background particles -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Background Music / Ambience Control -->
+  <div class="audio-control-bar">
+    <audio id="customAudio" preload="auto" loop src="audio/song.mpeg">
+      <source src="audio/song.mpeg" type="audio/mpeg">
+      <source src="audio/song.mp3" type="audio/mpeg">
+      <source src="audio/song.m4a" type="audio/mp4">
+    </audio>
+    <button id="musicToggleBtn" class="music-btn" title="Play our song">
+      <span class="music-icon">🎵</span>
+      <span class="music-label">Our Song</span>
+      <span class="vinyl-disc"></span>
+    </button>
+  </div>
+
+  <div class="main-wrapper">
+    <!-- Header / Hero Section -->
+    <header class="hero-section">
+      <div class="pill-badge">✨ For my favourite person ✨</div>
+      <h1 class="main-title">Happy Birthday, <span class="highlight-name">Arka</span>! 🎂</h1>
+      <p class="hero-subtitle">
+        Celebrating the sweetest soul in the world, and celebrating the best 6 months of my life by your side.
+      </p>
+      <div class="scroll-down-hint">
+        <span>Scroll to open your surprise</span>
+        <div class="bouncing-arrow">↓</div>
+      </div>
+    </header>
+
+    <!-- 6 Months Milestone Special Section -->
+    <section class="milestone-section">
+      <div class="milestone-card">
+        <div class="milestone-badge">💕 My lovely boy 💕</div>
+        <h2 class="milestone-title">6 Months With You</h2>
+        <p class="milestone-highlight">
+          "These past 6 months with you were the most beautiful 6 months of my life."
+        </p>
+
+        <!-- Live Love Counter -->
+        <div class="counter-container">
+          <div class="counter-box">
+            <span class="counter-number" id="countDays">183</span>
+            <span class="counter-label">Days</span>
+          </div>
+          <div class="counter-box">
+            <span class="counter-number" id="countHours">00</span>
+            <span class="counter-label">Hours</span>
+          </div>
+          <div class="counter-box">
+            <span class="counter-number" id="countMinutes">00</span>
+            <span class="counter-label">Minutes</span>
+          </div>
+          <div class="counter-box">
+            <span class="counter-number" id="countSeconds">00</span>
+            <span class="counter-label">Seconds</span>
+          </div>
+        </div>
+        <p class="counter-caption">...of endless smiles, warm hugs, late night talks, and falling in love with you every single day.</p>
+      </div>
+    </section>
+
+    <!-- Interactive Envelope Card Section -->
+    <section class="letter-section">
+      <h2 class="section-title">A Love Letter for You 💌</h2>
+      <p class="section-subtitle">Click on the wax heart seal to open your birthday card</p>
+
+      <div class="envelope-wrapper">
+        <div class="envelope" id="envelope">
+          <div class="envelope-back"></div>
+          <div class="letter-card" id="letterCard">
+            <div class="letter-content">
+              <div class="letter-header">
+                <span class="letter-date">October 28</span>
+                <span class="letter-tag">To My Arka ❤️</span>
+              </div>
+              <h3 class="letter-salutation">My Dearest Arka,</h3>
+              <p>
+                Happy Birthday, my love! 🎉 Today is all about celebrating you — your kindness, your sweet laugh, your big heart, and the sheer joy you bring into my world every single day.
+              </p>
+              <p class="special-quote">
+                Completing 6 months of our relationship on your birthday makes today doubly precious. Looking back, these past 6 months with you have truly been <strong>the most beautiful 6 months of my life</strong>. You have given me a happiness I never knew was possible.
+              </p>
+              <p>
+                I want you to always remember that no matter where life takes us, through every high and every low, <strong>I love you and I will always be right here for you</strong> — cheering for you, holding your hand, and believing in you.
+              </p>
+              <p>
+                I don't just want these 6 months; I want many, many more years with you. Decades of birthdays, quiet evenings, silly moments, and sweet memories together.
+              </p>
+              <div class="letter-closing">
+                <p>Happy Birthday, sweetheart! 🎂</p>
+                <p class="letter-signature">Forever & Always Yours 💕</p>
+              </div>
+            </div>
+            <button class="close-letter-btn" id="closeLetterBtn" title="Fold back">Fold Letter ✕</button>
+          </div>
+          <div class="envelope-front"></div>
+          <div class="envelope-flap"></div>
+          <div class="wax-seal" id="waxSeal" title="Click to open!">
+            <span>❤️</span>
+            <small>OPEN</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Birthday Cake Section -->
+    <section class="cake-section">
+      <div class="cake-card">
+        <h2 class="section-title">Make a Birthday Wish! 🎂✨</h2>
+        <p class="section-subtitle">Blow out the candles before you make your wish, Arka</p>
+
+        <div class="cake-container">
+          <!-- Multi-tier Birthday Cake with Animated Candles -->
+          <div class="cake-visual">
+            <div class="candles-row" id="candlesRow">
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle main-candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+            </div>
+            <div class="cake-tier tier-top">
+              <div class="frosting-drip"></div>
+              <div class="sprinkle s1"></div>
+              <div class="sprinkle s2"></div>
+              <div class="sprinkle s3"></div>
+            </div>
+            <div class="cake-tier tier-bottom">
+              <div class="frosting-drip"></div>
+              <div class="cake-piping"></div>
+              <div class="sprinkle s4"></div>
+              <div class="sprinkle s5"></div>
+              <div class="sprinkle s6"></div>
+            </div>
+            <div class="cake-plate"></div>
+          </div>
+
+          <div class="wish-action-area">
+            <button id="blowCandlesBtn" class="magic-btn">
+              <span>💨</span> Blow Out the Candles!
+            </button>
+            <div id="wishMessage" class="wish-reveal hidden">
+              <div class="wish-sparkle">✨ 🎉 🎈 ✨</div>
+              <h3>Wishes Sent to the Universe! 🌟</h3>
+              <p>
+                May all your biggest dreams, your secret goals, and your deepest wishes come true this year, Arka.
+                You deserve all the happiness the universe can give!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Polaroid Memories Gallery & Reasons I Love You -->
+    <section class="polaroids-section">
+      <h2 class="section-title">Our little moments</h2>
+      <p class="section-subtitle">(hover to see the messages inside :)</p>
+
+      <div class="polaroid-grid">
+        <!-- Card 1 -->
+        <div class="polaroid-card">
+          <div class="polaroid-inner">
+            <div class="polaroid-front">
+              <div class="tape-strip"></div>
+              <div class="photo-box">
+                <img src="images/photo1.jpeg" alt="Where It All Began" loading="lazy">
+              </div>
+              <div class="polaroid-caption">Where It All Began 💭</div>
+            </div>
+            <div class="polaroid-back">
+              <h4>Our First Sparks</h4>
+              <p>From the moment you entered my life, everything felt warmer and brighter. Meeting you was the best plot twist ever.</p>
+              <span class="card-heart">💖</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="polaroid-card">
+          <div class="polaroid-inner">
+            <div class="polaroid-front">
+              <div class="tape-strip"></div>
+              <div class="photo-box">
+                <img src="images/photo2.jpeg" alt="Your Beautiful Smile" loading="lazy">
+              </div>
+              <div class="polaroid-caption">Your Beautiful Smile ✨</div>
+            </div>
+            <div class="polaroid-back">
+              <h4>My Favorite View</h4>
+              <p>No matter how tiring or long any day is, just one glimpse of your smile instantly fixes everything for me.</p>
+              <span class="card-heart">✨</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="polaroid-card">
+          <div class="polaroid-inner">
+            <div class="polaroid-front">
+              <div class="tape-strip"></div>
+              <div class="photo-box">
+                <img src="images/photo3.jpeg" alt="Late Night Talks" loading="lazy">
+              </div>
+              <div class="polaroid-caption">Late Night Talks 🌌</div>
+            </div>
+            <div class="polaroid-back">
+              <h4>My Safe Place</h4>
+              <p>Those hours where we talk about anything and everything. Thank you for always listening and being my comfort zone.</p>
+              <span class="card-heart">🌙</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="polaroid-card">
+          <div class="polaroid-inner">
+            <div class="polaroid-front">
+              <div class="tape-strip"></div>
+              <div class="photo-box">
+                <img src="images/photo4.jpeg" alt="Always by Your Side" loading="lazy">
+              </div>
+              <div class="polaroid-caption">Always by Your Side 🌸</div>
+            </div>
+            <div class="polaroid-back">
+              <h4>My Promise to You</h4>
+              <p>I will always be your biggest cheerleader, your partner-in-crime, and your shoulder to lean on. Always.</p>
+              <span class="card-heart">🤝</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="polaroid-card">
+          <div class="polaroid-inner">
+            <div class="polaroid-front">
+              <div class="tape-strip"></div>
+              <div class="photo-box">
+                <img src="images/photo5.jpeg" alt="Many More Years to Go" loading="lazy">
+              </div>
+              <div class="polaroid-caption">Many More Years to Go 🥂</div>
+            </div>
+            <div class="polaroid-back">
+              <h4>Our Forever</h4>
+              <p>6 months down, a whole lifetime of adventures, cozy dates, and unforgettable memories left to go!</p>
+              <span class="card-heart">🥂</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="polaroid-card">
+          <div class="polaroid-inner">
+            <div class="polaroid-front">
+              <div class="tape-strip"></div>
+              <div class="photo-box">
+                <img src="images/photo6.jpeg" alt="The Birthday Boy" loading="lazy">
+              </div>
+              <div class="polaroid-caption">The Birthday Boy 🎈</div>
+            </div>
+            <div class="polaroid-back">
+              <h4>Happy Birthday Arka!</h4>
+              <p>May this year bring you boundless success, health, laughter, and endless love. You deserve the best!</p>
+              <span class="card-heart">🎉</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="photo-tip-text">✨ <em>Every picture with you is a memory I cherish forever</em> ✨</p>
+    </section>
+
+    <!-- Infinite Love Tapper -->
+    <section class="love-meter-section">
+      <div class="love-meter-card">
+        <h3>How Much I Love You 💖</h3>
+        <p>Press the heart button whenever you need a reminder!</p>
+        <button id="sendLoveBtn" class="big-heart-btn" aria-label="Send Love">
+          <span class="heart-pulse">❤️</span>
+        </button>
+        <div class="love-counter-display">
+          Love Sent: <span id="loveCountNumber">6,000,000</span>% & Counting!
+        </div>
+        <p class="love-sweet-note" id="loveMessageToast">Keep clicking to send infinite love! 🚀</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+      <div class="footer-heart">💝</div>
+      <p class="footer-main">Made with all the love for my <strong>Bhondu Billa</strong></p>
+      <p class="footer-sub">October 28 • Celebrating Our 6 Months Milestone • To Many More Years</p>
+    </footer>
+  </div>
+
+  <!-- Confetti Canvas overlay -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
