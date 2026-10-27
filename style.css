@@ -505,9 +505,19 @@ body {
 }
 
 /* When Envelope is Opened */
-.envelope.is-open .envelope-flap {
-  transform: rotateX(180deg);
-  z-index: 1;
+.envelope.is-open {
+  height: auto;
+  min-height: auto;
+  box-shadow: none;
+  background: transparent;
+}
+
+.envelope.is-open .envelope-flap,
+.envelope.is-open .envelope-back,
+.envelope.is-open .envelope-front {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
 }
 
 .envelope.is-open .wax-seal {
@@ -517,23 +527,22 @@ body {
 
 .envelope.is-open .letter-card {
   position: relative;
-  top: auto;
-  left: auto;
+  top: 0;
+  left: 0;
   width: 100%;
-  transform: translateY(-80px) scale(1.02);
+  transform: none;
   z-index: 10;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
-  animation: slideAndPop 0.8s forwards;
+  box-shadow: 0 16px 45px rgba(255, 107, 139, 0.22);
+  animation: smoothFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .envelope.is-open .close-letter-btn {
   display: block;
 }
 
-@keyframes slideAndPop {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-160px); z-index: 10; }
-  100% { transform: translateY(-40px); z-index: 10; }
+@keyframes smoothFadeUp {
+  0% { opacity: 0; transform: translateY(20px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* ========================================================
@@ -1046,38 +1055,296 @@ body {
    RESPONSIVE DESIGN (MOBILE & TABLET)
    ======================================================== */
 @media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .main-wrapper {
+    padding: 15px 14px 40px 14px;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .audio-control-bar {
+    top: 12px;
+    right: 12px;
+  }
+
+  .music-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    gap: 6px;
+  }
+
+  .vinyl-disc {
+    width: 18px;
+    height: 18px;
+  }
+
+  .hero-section {
+    padding: 35px 6px 20px;
+  }
+
+  .pill-badge {
+    font-size: 0.82rem;
+    padding: 6px 14px;
+    max-width: 90%;
+    margin-bottom: 14px;
+  }
+
   .main-title {
+    font-size: 2.1rem;
+    line-height: 1.25;
+    word-break: break-word;
+  }
+
+  .highlight-name {
+    font-size: 2.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.98rem;
+    line-height: 1.5;
+    padding: 0 4px;
+    margin-bottom: 20px;
+  }
+
+  .milestone-section {
+    margin: 25px auto 45px;
+  }
+
+  .milestone-card {
+    padding: 24px 14px;
+    border-radius: 20px;
+  }
+
+  .milestone-title {
+    font-size: 1.75rem;
+  }
+
+  .milestone-highlight {
+    font-size: 1.35rem;
+    line-height: 1.35;
+    padding: 0 4px;
+    margin-bottom: 20px;
+  }
+
+  .counter-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 280px;
+    margin: 0 auto 16px;
+  }
+
+  .counter-box {
+    width: 100%;
+    min-width: unset;
+    padding: 12px 6px;
+    border-radius: 14px;
+  }
+
+  .counter-number {
+    font-size: 1.7rem;
+  }
+
+  .counter-caption {
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.92rem;
+    margin-bottom: 24px;
+    padding: 0 6px;
+  }
+
+  .letter-section {
+    margin: 35px auto 50px;
+  }
+
+  .envelope-wrapper {
+    min-height: 260px;
+    width: 100%;
+    overflow: visible;
+  }
+
+  .envelope {
+    width: 100%;
+    max-width: 320px;
+    height: 200px;
+  }
+
+  .envelope-flap {
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 110px solid var(--envelope-flap);
+  }
+
+  .envelope-front {
+    border-left: 160px solid var(--envelope-color);
+    border-right: 160px solid var(--envelope-color);
+    border-bottom: 105px solid #f095a8;
+  }
+
+  .wax-seal {
+    top: 75px;
+    width: 54px;
+    height: 54px;
+  }
+
+  .wax-seal span {
+    font-size: 1.15rem;
+  }
+
+  .wax-seal small {
+    font-size: 0.58rem;
+  }
+
+  .letter-card {
+    padding: 22px 16px;
+    border-radius: 16px;
+  }
+
+  .letter-content {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .letter-salutation {
+    font-size: 1.3rem;
+  }
+
+  .letter-content .special-quote {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+
+  .letter-signature {
+    font-size: 1.55rem;
+  }
+
+  .cake-section {
+    margin: 40px auto 50px;
+  }
+
+  .cake-card {
+    padding: 26px 12px;
+    border-radius: 20px;
+  }
+
+  .cake-visual {
+    transform: scale(0.85);
+    margin: -10px auto 10px;
+  }
+
+  .magic-btn {
+    padding: 12px 22px;
+    font-size: 0.95rem;
+  }
+
+  .wish-reveal {
+    padding: 18px 14px;
+    border-radius: 16px;
+    margin-top: 18px;
+  }
+
+  .wish-reveal h3 {
+    font-size: 1.3rem;
+  }
+
+  .wish-reveal p {
+    font-size: 0.92rem;
+  }
+
+  .polaroids-section {
+    margin: 45px auto;
+  }
+
+  .polaroid-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin: 0 auto;
+    gap: 26px;
+    padding: 0;
+  }
+
+  .polaroid-card {
+    height: 335px;
+  }
+
+  .photo-box {
+    height: 215px;
+  }
+
+  .love-meter-section {
+    margin: 40px auto 50px;
+  }
+
+  .love-meter-card {
+    padding: 26px 14px;
+    border-radius: 20px;
+  }
+
+  .love-meter-card h3 {
+    font-size: 1.75rem;
+  }
+
+  .heart-pulse {
+    font-size: 4rem;
+  }
+
+  .love-counter-display {
+    font-size: 1.2rem;
+  }
+
+  .footer-main {
+    font-size: 1.05rem;
+  }
+
+  .footer-sub {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .envelope {
+    max-width: 280px;
+    height: 180px;
+  }
+
+  .envelope-flap {
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-top: 95px solid var(--envelope-flap);
+  }
+
+  .envelope-front {
+    border-left: 140px solid var(--envelope-color);
+    border-right: 140px solid var(--envelope-color);
+    border-bottom: 95px solid #f095a8;
+  }
+
+  .wax-seal {
+    top: 68px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .main-title {
+    font-size: 1.85rem;
+  }
+
+  .highlight-name {
     font-size: 2.4rem;
   }
-  .highlight-name {
-    font-size: 3rem;
-  }
-  .milestone-highlight {
-    font-size: 1.5rem;
-  }
-  .counter-box {
-    min-width: 75px;
-    padding: 12px 8px;
-  }
-  .counter-number {
-    font-size: 1.6rem;
-  }
-  .envelope {
-    height: 240px;
-  }
-  .envelope-flap {
-    border-top: 130px solid var(--envelope-flap);
-  }
-  .wax-seal {
-    top: 90px;
-  }
-  .letter-card {
-    padding: 22px 18px;
-  }
-  .letter-content {
-    font-size: 0.9rem;
-  }
+
   .cake-visual {
-    transform: scale(0.9);
+    transform: scale(0.75);
   }
 }
